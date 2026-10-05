@@ -12,10 +12,10 @@
 #### Accounts will have usernames and passwords and will have password limits and requirements. Access levels will provide certain permissions to accounts such as editing item titles, price, availability, stock, etc.  Levels like customer will only be able to view, buy and sell while Manager has full control except for other accounts and information. Multiple markets will be available to view. Everyone can view these markets but none can edit a market's name, content or product types. No one can put the wrong information in a market like incorrect item labeling.
 
 ## Technology Stack:
-#### | Teachnology | Purpose |
-#### | -------- | -------- |
-#### | HTTPS/HTML, CSS, JS  | Front-end, GUI |
-#### | JSON  | Back-end, API  |
-#### | SQL  | Database  |
+| Teachnology | Purpose |
+| -------- | -------- |
+| HTTPS/HTML, CSS, JS  | Front-end, GUI |
+| JSON  | Back-end, API  |
+| SQL  | Database  |
 
 
