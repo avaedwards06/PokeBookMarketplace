@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page | PokeBook</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokebook Marketplace</title>
+
+  <!-- Fonts for market titles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    
+
+  <!-- Top bar (includes logo) -->
+<header class="site-header">
+    <a href="main.html">
+        <img src="images/pokemon_title.png" alt="Pokebook Marketplace" class="logo">
+    </a>
+
+    <h1 class="page-title">Main Page</h1>
+
+    <a href="cart.html" class="cart-button">
+        <img src="images/cart_icon.png" alt="Cart">
+    </a>
+</header>
+
+  <!-- Page column -->
+  <main class="page">
+    <!-- for main.js -->
+    <section id="market-grid" class="market-grid"></section>
+  </main>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
