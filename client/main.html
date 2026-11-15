@@ -6,6 +6,30 @@
     <title>Main Page | PokeBook</title>
 </head>
 <body>
-    
+
+  // DO NOT WORRY. I plan on making the dropdown menu work with CSS and JS.
+  // I just wanted to get the HTML structure down first.
+
+  <div class="controlStrip">
+    <h3>Welcome to PokeBook Marketplace!</h3>
+    <dropdown id="accountStuff">
+      <button onclick="profile()">Profile</button>
+      <button onclick="settings()">Settings</button>
+    </dropdown>
+    <dropdown id="viewBy">
+      <p>View By:</p>
+      <button onclick="market()">Market</button>
+      <button onclick="vendor()">Vendor</button>
+      <button onclick="product()">Product</button>
+    </dropdown>
+    <button onclick="cart()">Cart</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+  <div class="marketplace">
+    <button onclick="clothesMarket()">Clothes</button>
+    <button onclick="plushieMarket()">Plushie</button>
+    <button onclick="fanartMarket()">FanArt</button>
+    <button onclick="cardMarket()">Card</button>
+  </div>
 </body>
 </html>
