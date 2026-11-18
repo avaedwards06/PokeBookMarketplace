@@ -1,3 +1,5 @@
+/* PART 1: SHARED BY EVERY PAGE */
+
 /* Main colors */
 :root {
   --header-blue: #4267b2;
@@ -15,10 +17,11 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url("images/background.png") repeat;
+  /* ../ because this file is inside the css folder */
+  background: url("../images/background.webp") repeat;
 }
 
-/* -- Header: logo | title | cart */
+/* Header: logo | title | cart */
 .site-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -50,7 +53,7 @@ body {
   height: 100%;
 }
 
-/* -- White middle column */
+/* White middle column */
 .page {
   max-width: 720px;
   min-height: 100vh;
@@ -59,7 +62,12 @@ body {
   background: var(--page-white);
 }
 
-/* -- Market grid: 2 columns */
+
+/* PART 2: PAGE STYLES */
+
+/* ---------- Main page (main.html) ---------- */
+
+/* Market grid: 2 columns */
 .market-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -99,6 +107,11 @@ body {
   font-size: 34px;
 }
 
+.market-label p {
+  margin: 0;
+  font-style: italic;
+}
+
 /* Tall card: picture on top, label below, 2 rows high */
 .card-tall {
   flex-direction: column;
@@ -121,3 +134,12 @@ body {
   justify-content: center;
   font-size: 20px;
 }
+
+
+/* ---------- Login page (index.html) ---------- */
+
+
+/* ---------- Market page (market.html) ---------- */
+
+
+/* ---------- Cart page (cart.html) ---------- */
