@@ -17,7 +17,6 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  /* ../ because this file is inside the css folder */
   background: url("../images/background.webp") repeat;
 }
 
@@ -75,7 +74,7 @@ body {
   gap: 20px 36px;
 }
 
-/* Every card */
+/* Every card on the main page for markets*/
 .market-card {
   display: flex;
   border: 1px solid var(--border-grey);
