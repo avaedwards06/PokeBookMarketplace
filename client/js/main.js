@@ -15,14 +15,62 @@ const markets = [
     layout: "side",
     color: "#86b9ec"
   },
-  { id: 4,  name: "Fan Art Market",      layout: "plain" },
-  { id: 3,  name: "Pokemon Card Market", layout: "plain" },
-  { id: 5,  name: "Bag Charm Market",    layout: "plain" },
-  { id: 6,  name: "Furniture Market",    layout: "plain" },
-  { id: 7,  name: "Book Market",         layout: "plain" },
-  { id: 8,  name: "Food Market",         layout: "plain" },
-  { id: 9,  name: "Rug Market",          layout: "plain" },
-  { id: 10, name: "Figurines Market",    layout: "plain" }
+  { id: 4,
+    name: "Fan Art Market",
+    tagline: "",
+    image: "images/fanart.png",
+    layout: "side",
+    color: "#f5a9b8"
+  },
+  { id: 3,
+    name: "Pokemon Card Market",
+    tagline: "",
+    image: "images/pokemoncard.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 5,
+    name: "Bag Charm Market",
+    tagline: "",
+    image: "images/bagcharm.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 6,
+    name: "Furniture Market",
+    tagline: "",
+    image: "images/furniture.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 7,
+    name: "Book Market",
+    tagline: "",
+    image: "images/book.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 8,
+    name: "Food Market",
+    tagline: "",
+    image: "images/food.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 9,
+    name: "Rug Market",
+    tagline: "",
+    image: "images/rug.png",
+    layout: "side",
+    color: ""
+  },
+  { id: 10,
+    name: "Figurines Market",
+    tagline: "",
+    image: "images/figurines.png",
+    layout: "side",
+    color: ""
+  }
 ];
 
 // Making the picture part of a card
@@ -69,37 +117,34 @@ function createMarketCard(market) {
   const card = document.createElement("a");
 
   if (market.id === 1) {
-    card.href = "clothesMarket.html?id=";
+    card.href = "marketHTML/clothesMarket.html?id=";
   }
   else if (market.id === 2) {
-    card.href = "plushieMarket.html?id=" + market.id;
+    card.href = "marketHTML/plushieMarket.html?id=" + market.id;
   }
   else if (market.id === 3) {
-    card.href = "pokemonCardMarket.html?id=" + market.id;
+    card.href = "marketHTML/pokemonCardMarket.html?id=" + market.id;
   }
   else if (market.id === 4) {
-    card.href = "fanArtMarket.html?id=" + market.id;
+    card.href = "marketHTML/fanArtMarket.html?id=" + market.id;
   }
   else if (market.id === 5) {
-    card.href = "bagCharmMarket.html?id=" + market.id;
+    card.href = "marketHTML/bagCharmMarket.html?id=" + market.id;
   }
   else if (market.id === 6) {
-    card.href = "furnitureMarket.html?id=" + market.id;
+    card.href = "marketHTML/furnitureMarket.html?id=" + market.id;
   }
   else if (market.id === 7) {
-    card.href = "bookMarket.html?id=" + market.id;
+    card.href = "marketHTML/bookMarket.html?id=" + market.id;
   }
   else if (market.id === 8) {
-    card.href = "foodMarket.html?id=" + market.id;
+    card.href = "marketHTML/foodMarket.html?id=" + market.id;
   }
   else if (market.id === 9) {
-    card.href = "rugMarket.html?id=" + market.id;
+    card.href = "marketHTML/rugMarket.html?id=" + market.id;
   }
   else if (market.id === 10) {
-    card.href = "figurinesMarket.html?id=" + market.id;
-  }
-  else {
-    card.href = "market.html?id=" + market.id;
+    card.href = "marketHTML/figurinesMarket.html?id=" + market.id;
   }
 
   card.className = "market-card card-" + market.layout;

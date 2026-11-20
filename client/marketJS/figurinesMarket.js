@@ -1,7 +1,7 @@
 const vendors = [
   {
     id: 1,
-    name: "Totally Stylin'",
+    name: "Poke-figures",
     tagline: "",
     image: "",
     layout: "tall",
@@ -9,7 +9,7 @@ const vendors = [
   },
   {
     id: 2,
-    name: "DENSOKU",
+    name: "Action-mon",
     tagline: "",
     image: "",
     layout: "tall",
@@ -61,10 +61,10 @@ function createVendorCard(vendor) {
   const card = document.createElement("a");
 
   if (vendor.id === 1) {
-    card.href = "totallyStylin.html?id=";
+    card.href = "../vendorHTML/pokeFigures.html?id=";
   }
   else if (vendor.id === 2) {
-    card.href = "densoku.html?id=" + vendor.id;
+    card.href = "../vendorHTML/actionMon.html?id=" + vendor.id;
   }
 
   card.className = "market-card card-" + vendor.layout;
