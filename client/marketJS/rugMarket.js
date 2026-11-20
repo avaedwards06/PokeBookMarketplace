@@ -1,7 +1,7 @@
 const vendors = [
   {
     id: 1,
-    name: "Rob's Rugs",
+    name: "Rob's Rugs!",
     tagline: "",
     image: "",
     layout: "tall",
