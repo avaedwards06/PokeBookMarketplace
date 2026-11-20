@@ -64,10 +64,44 @@ function createLabel(market) {
   return label;
 }
 
-// Making the whole card and a link to that market's page
+//Making each market card and a link to that market's page
 function createMarketCard(market) {
   const card = document.createElement("a");
-  card.href = "market.html?id=" + market.id;
+
+  if (market.id === 1) {
+    card.href = "clothesMarket.html?id=";
+  }
+  else if (market.id === 2) {
+    card.href = "plushieMarket.html?id=" + market.id;
+  }
+  else if (market.id === 3) {
+    card.href = "pokemonCardMarket.html?id=" + market.id;
+  }
+  else if (market.id === 4) {
+    card.href = "fanArtMarket.html?id=" + market.id;
+  }
+  else if (market.id === 5) {
+    card.href = "bagCharmMarket.html?id=" + market.id;
+  }
+  else if (market.id === 6) {
+    card.href = "furnitureMarket.html?id=" + market.id;
+  }
+  else if (market.id === 7) {
+    card.href = "bookMarket.html?id=" + market.id;
+  }
+  else if (market.id === 8) {
+    card.href = "foodMarket.html?id=" + market.id;
+  }
+  else if (market.id === 9) {
+    card.href = "rugMarket.html?id=" + market.id;
+  }
+  else if (market.id === 10) {
+    card.href = "figurinesMarket.html?id=" + market.id;
+  }
+  else {
+    card.href = "market.html?id=" + market.id;
+  }
+
   card.className = "market-card card-" + market.layout;
 
   if (market.layout === "plain") {

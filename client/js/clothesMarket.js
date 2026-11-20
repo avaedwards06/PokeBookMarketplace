@@ -56,10 +56,17 @@ function createLabel(vendor) {
   return label;
 }
 
-// Making the whole card and a link to that vendor's page
+//Making each vendor card and a link to that vendor's page
 function createVendorCard(vendor) {
   const card = document.createElement("a");
-  card.href = "market.html?id=" + vendor.id;
+
+  if (vendor.id === 1) {
+    card.href = "totallyStylin.html?id=";
+  }
+  else if (vendor.id === 2) {
+    card.href = "densoku.html?id=" + vendor.id;
+  }
+
   card.className = "market-card card-" + vendor.layout;
 
   if (vendor.layout === "plain") {
