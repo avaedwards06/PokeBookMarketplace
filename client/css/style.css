@@ -135,8 +135,31 @@ body {
 }
 
 
-/* ---------- Login page (index.html) ---------- */
+/* ---------- Login page (index.html & signUp.html) ---------- */
 
+#login,
+#register {
+
+}
+
+.welcome {
+  font-weight: bold;
+  margin: 0;
+}
+
+.login {
+  text-align: center;
+}
+
+#account {
+}
+
+.login-button {
+  border-radius: 20px;
+  border: 1px solid #555555;
+  background-color: #4267b2;
+
+}
 
 /* ---------- Market page (market.html) ---------- */
 
