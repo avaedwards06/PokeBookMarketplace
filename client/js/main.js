@@ -116,36 +116,8 @@ function createLabel(market) {
 function createMarketCard(market) {
   const card = document.createElement("a");
 
-  if (market.id === 1) {
-    card.href = "marketHTML/clothesMarket.html?id=";
-  }
-  else if (market.id === 2) {
-    card.href = "marketHTML/plushieMarket.html?id=" + market.id;
-  }
-  else if (market.id === 3) {
-    card.href = "marketHTML/pokemonCardMarket.html?id=" + market.id;
-  }
-  else if (market.id === 4) {
-    card.href = "marketHTML/fanArtMarket.html?id=" + market.id;
-  }
-  else if (market.id === 5) {
-    card.href = "marketHTML/bagCharmMarket.html?id=" + market.id;
-  }
-  else if (market.id === 6) {
-    card.href = "marketHTML/furnitureMarket.html?id=" + market.id;
-  }
-  else if (market.id === 7) {
-    card.href = "marketHTML/bookMarket.html?id=" + market.id;
-  }
-  else if (market.id === 8) {
-    card.href = "marketHTML/foodMarket.html?id=" + market.id;
-  }
-  else if (market.id === 9) {
-    card.href = "marketHTML/rugMarket.html?id=" + market.id;
-  }
-  else if (market.id === 10) {
-    card.href = "marketHTML/figurinesMarket.html?id=" + market.id;
-  }
+  // Every market uses the same page. The ID tells it which one to show.
+  card.href = "market.html?id=" + market.id;
 
   card.className = "market-card card-" + market.layout;
 

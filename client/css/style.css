@@ -61,6 +61,13 @@ body {
   background: var(--page-white);
 }
 
+/* For phones: smaller header to fit them right! */
+@media (max-width: 600px) {
+  .site-header { height: 70px; }
+  .logo { height: 34px; }
+  .page-title { font-size: 26px; text-align: center; }
+  .cart-button { width: 40px; height: 40px; }
+}
 
 /* PART 2: PAGE STYLES */
 
@@ -163,5 +170,102 @@ body {
 
 /* ---------- Market page (market.html) ---------- */
 
+/* " All markets" link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--header-blue);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* "Loading..." and error messages */
+.status {
+  margin: 20px 0;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--border-grey);
+}
+
+/* "Vendors" and "Products" headings */
+.section-title {
+  margin: 10px 0 12px;
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 28px;
+  border-bottom: 2px solid var(--header-blue);
+}
+
+/* Vendor buttons in a row */
+.vendor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.vendor-link {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--header-blue);
+  color: var(--page-white);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.vendor-link:hover {
+  opacity: 0.85;
+}
+
+/* Product cards: as many columns as fit, at least 200px wide */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid var(--border-grey);
+  background: var(--page-white);
+  padding: 10px;
+}
+
+.product-photo {
+  height: 150px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-grey);
+  font-style: italic;
+  color: var(--border-grey);
+}
+
+.product-name {
+  margin: 0;
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.product-price {
+  margin: 4px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-vendor,
+.product-stock {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.product-vendor a {
+  color: var(--header-blue);
+}
+
+/* low stock warning with red color */
+.low-stock {
+  color: #c0392b;
+  font-weight: bold;
+}
 
 /* ---------- Cart page (cart.html) ---------- */
