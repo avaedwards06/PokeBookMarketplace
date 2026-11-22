@@ -1,4 +1,4 @@
-// this is genuinely hell
+// this is genuinely hell...
 
 require("dotenv").config();
 const mysql = require("mysql2/promise");
@@ -8,8 +8,18 @@ const path = require("path");
 async function runFile(connection, fileName) {
   const filePath = path.join(__dirname, "..", "sql", fileName);
   const sql = fs.readFileSync(filePath, "utf8");
-  await connection.query(sql);
-  console.log("Ran " + fileName);
+
+  try {
+    await connection.query(sql);
+    console.log("Ran " + fileName);
+  } catch (err) {
+    // An empty file (or one with only comments) is fine, just skip it
+    if (err.code === "ER_EMPTY_QUERY") {
+      console.log("Skipped " + fileName + " (it's empty)");
+    } else {
+      throw err;
+    }
+  }
 }
 
 async function resetDatabase() {
