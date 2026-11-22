@@ -246,3 +246,17 @@ body {
 }
 
 /* ---------- Cart page (cart.html) ---------- */
+
+/* ---------- Vendor page (vendor.html) ---------- */
+
+/* short description under the price */
+.product-description {
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--border-grey);
+}
+
+/* greys out products that are sold out */
+.product-card.sold-out {
+  opacity: 0.5;
+}

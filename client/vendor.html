@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor | Pokebook Marketplace</title>
+
+  <!-- Font for titles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="main.html">
+      <img src="images/pokemon_title.png" alt="Pokebook Marketplace" class="logo">
+    </a>
+
+    <h1 class="page-title" id="page-title">Vendor</h1>
+
+    <a href="cart.html" class="cart-button">
+      <img src="images/cart_icon.png" alt="Cart">
+    </a>
+  </header>
+
+  <main class="page">
+    <a href="main.html" class="back-link" id="back-link">&larr; All markets</a>
+
+    <p id="status" class="status">Loading...</p>
+
+    <!-- Everything this vendor sells -->
+    <section id="product-section" hidden>
+      <h2 class="section-title">Products</h2>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <script src="js/vendor.js"></script>
+</body>
+</html>
