@@ -7,6 +7,7 @@
   --card-grey: #ececec;
   --border-grey: #555555;
   --text-black: #000000;
+  --pokeball-red: #e3350d; 
 }
 
 /* Page */
@@ -164,127 +165,150 @@ body {
 }
 
 
-/* ---------- Login page (index.html & signUp.html) ---------- */
+/* ---------- Login and Sign up pages (index.html, sign-up.html) ---------- */
 
-body.login, body.register {
-  --primary: #000000;
-  --secondary: #FFFFFF;
-  --accent: #4267b2;
-  --shadow: 8px 8px 0px var(--primary);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: var(--secondary);
+body.login,
+body.register {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+/* the card */
+.login-container,
+.register-container {
+  width: 100%;
+  max-width: 420px;
+  background: var(--page-white);
+  border: 3px solid var(--text-black);
+  border-radius: 20px;
+  box-shadow: 10px 10px 0 var(--text-black);
+  overflow: hidden;
+}
+
+.auth-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 28px 20px 30px;
+  background: var(--pokeball-red);
 }
 
-.login-container, .register-container {
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid var(--primary);
-  padding: 40px 30px;
-  background-color: var(--secondary);
-  box-shadow: var(--shadow);
+.auth-logo {
+  max-width: 220px;
+  max-height: 80px;
+}
+
+.auth-stripe {
   position: relative;
-  border-radius: 12px;
+  height: 8px;
+  background: var(--text-black);
 }
 
-.login-container::before {
-  content: '';
+.auth-circle {
   position: absolute;
-  top: 6px;
-  left: 6px;
-  right: -6px;
-  bottom: -6px;
-  border: 1px solid var(--primary);
-  z-index: -1;
-  border-radius: 12px;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border: 7px solid var(--text-black);
+  border-radius: 50%;
+  background: var(--page-white);
 }
 
-.index h1 {
-  color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: 700;
+.auth-body {
+  padding: 36px 32px 28px;
+}
+
+.auth-body h1 {
+  margin: 0;
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 32px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.auth-body h2 {
+  margin: 6px 0 22px;
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--border-grey);
   text-align: center;
 }
 
 .input-group {
-  margin-bottom: 20px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
-.index label {
-  display: block;
-  margin-bottom: 8px;
+.input-group label {
   font-weight: bold;
-  color: var(--primary);
+  font-size: 14px;
 }
 
-.index input {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid var(--primary);
-  background-color: var(--secondary);
+.input-group input {
+  padding: 10px 12px;
+  border: 2px solid #bbbbbb;
+  border-radius: 10px;
   font-size: 16px;
+}
+
+/* blue outline on the box you're typing in */
+.input-group input:focus {
   outline: none;
-  transition: all 0.3s;
+  border-color: var(--header-blue);
+  box-shadow: 0 0 0 3px rgba(66, 103, 178, 0.25);
 }
 
-.index input:focus {
-  box-shadow: 4px 4px 0px var(--primary);
-}
-
-.index button {
+.auth-body button {
   width: 100%;
+  margin-top: 6px;
   padding: 12px;
-  background-color: var(--accent);
-  color: var(--secondary);
-  border: 2px solid var(--primary);
-  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--header-blue);
+  color: var(--page-white);
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s;
 }
 
-.index button:hover {
-  box-shadow: 4px 4px 0px var(--primary);
-  transform: translate(-2px, -2px);
+.auth-body button:hover {
+  opacity: 0.9;
 }
 
+/* ——— OR ——— */
 .divider {
   display: flex;
   align-items: center;
-  margin: 25px 0;
-  color: var(--primary);
+  gap: 12px;
+  margin: 22px 0 16px;
   font-weight: bold;
+  color: var(--border-grey);
 }
 
-.divider::before, .divider::after {
+.divider::before,
+.divider::after {
   content: "";
   flex: 1;
-  border-bottom: 2px solid var(--primary);
-  margin: 0 10px;
+  height: 2px;
+  background: #cccccc;
 }
 
 .footer {
   text-align: center;
-  margin-top: 20px;
-  color: var(--primary);
 }
 
 .footer a {
-  color: var(--primary);
+  color: var(--header-blue);
   font-weight: bold;
-  text-decoration: underline;
 }
-
-
 
 /* ---------- Market page (market.html) ---------- */
 

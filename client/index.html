@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <link rel="stylesheet" href="css/style.css">
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Pokebook Login</title>
+
+      <!-- font for titles (same as the rest of the site) -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+      <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="login">
     <div class="login-container">
-        <h1 id="welcome">Welcome to Pokebook Marketplace!</h1>
 
-        <h2>LOGIN BELOW</h2>
-
-        <div class="input-group">
-            <label for="username">USERNAME:</label>
-            <input type="text" id="username" placeholder="your_username">
+        <div class="auth-top">
+            <img src="images/pokemon_title.png" alt="Pokebook Marketplace" class="auth-logo">
         </div>
 
-        <div class="input-group">
-            <label for="password">PASSWORD:</label>
-            <input type="password" id="password" placeholder=" ">
+        <div class="auth-stripe"><span class="auth-circle"></span></div>
+
+        <div class="auth-body">
+            <h1 id="welcome">Welcome back, Trainer!</h1>
+
+            <h2>Log in to Pokebook Marketplace</h2>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="your_username">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Your password">
+            </div>
+
+            <button type="button" onclick="submitForm()">Log in</button>
+
+            <div class="divider">OR</div>
+
+            <div class="footer">
+                Don't have an account? <a href="sign-up.html">Sign up here!</a>
+            </div>
         </div>
 
-        <button type="button" onclick="submitForm()">LOG IN</button>
-
-        <div class="divider">OR</div>
-
-        <div class="footer">
-            Don't have an account? <a href="sign-up.html">Sign up here!</a>
-        </div>
     </div>
     <script src="js/index.js"></script>
   </body>
