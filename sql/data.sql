@@ -87,3 +87,10 @@ VALUES
 ((SELECT ID FROM Market WHERE Name = 'Rug'), 'Rurururugs!'),
 ((SELECT ID FROM Market WHERE Name = 'Figurines'), 'Poke-figures'),
 ((SELECT ID FROM Market WHERE Name = 'Figurines'), 'Action-mon');
+
+INSERT INTO vendorsells
+VALUES 
+((SELECT ID FROM Vendor WHERE Name = 'Totally Styling'), (SELECT ID FROM ITEM WHERE Name = 'Gloves'), 'Vanillite Gloves', 14.95, 'Kawaii Cute Frosty Vanillite Inspired Gloves perfect for the chilly Pokemon Catching Season!', LOAD_FILE('client\images\ProductExampleImages\Vanillite_Gloves_TotallyStyling.jpg'), 43),
+((SELECT ID FROM Vendor WHERE Name = 'DENSOKU'), (SELECT ID FROM ITEM WHERE Name = 'Sweatshirt'), 'Pikachu Hoodie', 36.00, 'Sleek, Soft, Irrisistable Pikachu Hoodie.', LOAD_FILE('client\images\ProductExampleImages\Pikachu_Hoodie_DENSOKU.jpg'), 20),
+((SELECT ID FROM Vendor WHERE Name = 'Julie''s Plushies'), (SELECT ID FROM ITEM WHERE Name = 'Large Plush'), 'Large Mosslax Plushie', 40.00, '30in incredibly soft mosslax plushie', LOAD_FILE('client\images\ProductExampleImages\Mosslax_Plushie_JuliesPlushies.jpg'), 10),
+((SELECT ID FROM Vendor WHERE Name = 'Julie''s Plushies'), (SELECT ID FROM ITEM WHERE Name = 'Mini Plush'), 'Mini Polywag Plushie', 10.00, '4in incredibly soft Polywag plushie for desks or shelves', LOAD_FILE('client\images\ProductExampleImages\Polywag_Plushie_JuliesPlushies.jpg'), 169);
