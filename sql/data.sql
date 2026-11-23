@@ -88,7 +88,7 @@ VALUES
 ((SELECT ID FROM Market WHERE Name = 'Figurines'), 'Poke-figures'),
 ((SELECT ID FROM Market WHERE Name = 'Figurines'), 'Action-mon');
 
-INSERT INTO vendorsells
+INSERT INTO vendorsells(VendorID, ItemID, Title, Price, Description, Photo, Stock)
 VALUES 
 ((SELECT ID FROM Vendor WHERE Name = 'Totally Styling'), (SELECT ID FROM ITEM WHERE Name = 'Gloves'), 'Vanillite Gloves', 14.95, 'Kawaii Cute Frosty Vanillite Inspired Gloves perfect for the chilly Pokemon Catching Season!', LOAD_FILE('client\images\ProductExampleImages\Vanillite_Gloves_TotallyStyling.jpg'), 43),
 ((SELECT ID FROM Vendor WHERE Name = 'DENSOKU'), (SELECT ID FROM ITEM WHERE Name = 'Sweatshirt'), 'Pikachu Hoodie', 36.00, 'Sleek, Soft, Irrisistable Pikachu Hoodie.', LOAD_FILE('client\images\ProductExampleImages\Pikachu_Hoodie_DENSOKU.jpg'), 20),
