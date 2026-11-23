@@ -6,21 +6,29 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Pokebook Login</title>
   </head>
-  <body>
-    <div id="login">
-    <h2 id="welcome">Pokebook Marketplace</h2>
-    <h3 id="login">Login below</h3>
-    <div id="account">
-      <input type="text" id="loginUsername" placeholder="Username">
-      <input type="password" id="loginPassword" placeholder="Password">
-    </div>
-    <br>
-    <div id="login-button">
-      <button type="button" onclick="submitForm()">Let's Go!</button>
-    </div>
-    <div id="orRegister">
-      <p>Don't have an account? <a href="signUp.html">Sign up</a></p>
-    </div>
+  <body class="login">
+    <div class="login-container">
+        <h1 id="welcome">Welcome to Pokebook Marketplace!</h1>
+
+        <h2>LOGIN</h2>
+
+        <div class="input-group">
+            <label for="username">USERNAME</label>
+            <input type="text" id="username" placeholder="your-Username">
+        </div>
+
+        <div class="input-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button type="button" onclick="submitForm()">SIGN IN</button>
+
+        <div class="divider">OR</div>
+
+        <div class="footer">
+            Don't have an account? <a href="signUp.html">Sign up</a>
+        </div>
     </div>
     <script src="js/index.js"></script>
   </body>
