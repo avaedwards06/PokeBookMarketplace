@@ -5,7 +5,7 @@ const markets = [
     tagline: "See the latest from our best clothing vendors!",
     image: "images/clothing.png",
     layout: "tall",
-    color: "#efe08b"
+    color: "#ef6464"
   },
   {
     id: 2,
@@ -27,49 +27,49 @@ const markets = [
     tagline: "Find the rarest Pokemon cards from all generations!",
     image: "images/pokemoncard.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#f7c873"
   },
   { id: 5,
     name: "Bag Charm Market",
     tagline: "Add a touch of Pokemon flair to your bag!",
     image: "images/bagcharm.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#c9b6e8"
   },
   { id: 6,
     name: "Furniture Market",
     tagline: "Make your space more Pokemon-friendly!",
     image: "images/furniture.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#a8d5ba"
   },
   { id: 7,
     name: "Book Market",
     tagline: "Discover the best Pokemon books and manga!",
     image: "images/book.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#f4a582"
   },
   { id: 8,
     name: "Food Market",
     tagline: "Treat yourself to some delicious Pokemon-themed snacks!",
     image: "images/food.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#f6e27f"
   },
   { id: 9,
     name: "Rug Market",
     tagline: "The coziest Pokemon rugs money can buy!",
     image: "images/rug.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#9fd8df"
   },
   { id: 10,
     name: "Figurines Market",
     tagline: "Collect your favorite Pokemon and Characters in figurine form!",
     image: "images/figurines.png",
     layout: "side",
-    color: "#f5a9b8"
+    color: "#d7c4a3"
   }
 ];
 

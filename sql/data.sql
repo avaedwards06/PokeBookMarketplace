@@ -127,18 +127,18 @@ VALUES
  'Polywag_Plushie_JuliesPlushies.jpg', 169),
 
 ((SELECT ID FROM Vendor WHERE Name = 'Red and White Art'),
- (SELECT ID FROM Item WHERE Name = 'Large picture'),
+ (SELECT ID FROM Item WHERE Name = 'Large pictures'),
  'Assorted Pokemon 20 inch Artwork', 25.00,
  'Beautiful large picture of Red and White Artist Akane Okimori''s Pokemon artwork. Perfect for decorating your room or office.',
  'AssortedPokemon_LargePicture_RedAndWhiteArt.jpg', 5),
 
  ((SELECT ID FROM Vendor WHERE Name = 'Pokestop Eatery'),
  (SELECT ID FROM Item WHERE Name = 'Cookies'),
- 'Assorted Surgar Cookies 12 Pack', 12.00,
+ 'Assorted Sugar Cookies 12 Pack', 12.00,
  'Assorted sugar cookies with Pokemon designs. Perfect for a party or just a snack.',
  'AssortedSugarCookies_PokestopEatery.jpg', 300),
 
- ((SELECT ID FROM Vendor WHERE Name = 'Pokefigures'),
+ ((SELECT ID FROM Vendor WHERE Name = 'Poke-figures'),
  (SELECT ID FROM Item WHERE Name = 'Chibi Figure'),
  'Chibi Team Rocket Figure Pack', 35.00,
  'Adorable chibi team rocket figures. Perfect for collectors or as a gift for a Pokemon fan.',

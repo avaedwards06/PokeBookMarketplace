@@ -97,7 +97,24 @@ body {
 
 /* ---------- Main page (main.html) ---------- */
 
-/* Market grid: 2 columns */
+/* welcome text above the cards */
+.page-intro {
+  margin: 4px 0 18px;
+  text-align: center;
+}
+
+.page-intro h2 {
+  margin: 0;
+  font-family: "Titillium Web", Arial, sans-serif;
+  font-size: 30px;
+}
+
+.page-intro p {
+  margin: 4px 0 0;
+  color: var(--border-grey);
+}
+
+/* market grid: 2 columns */
 .market-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -105,16 +122,30 @@ body {
   gap: 20px 36px;
 }
 
-/* Every card on the main page for markets*/
+/* every card on the main page for markets
+   (rounded with a thick outline, like the login card) */
 .market-card {
   display: flex;
-  border: 1px solid var(--border-grey);
+  border: 2px solid var(--text-black);
+  border-radius: 14px;
   background: var(--card-grey);
   color: var(--text-black);
   text-decoration: none;
+  overflow: hidden; /* this is for the spilling of the words hehe */
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* hover: the card lifts and gets the bold offset shadow */
+.market-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--text-black);
 }
 
 .market-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background: var(--page-white);
 }
 
@@ -124,47 +155,51 @@ body {
   object-fit: contain;
 }
 
+/* shown when a market picture is missing */
+.market-image.no-image {
+  background: var(--card-grey);
+  font-size: 15px;
+  font-style: italic;
+  color: #888888;
+  text-align: center;
+}
+
+/* colored label with the market name */
 .market-label {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  padding: 8px 10px;
+  overflow: hidden;
   font-family: "Titillium Web", Arial, sans-serif;
 }
 
 .market-label h2 {
   margin: 0;
   font-size: 34px;
+  line-height: 1.1;
 }
 
 .market-label p {
-  margin: 0;
+  margin: 4px 0 0;
   font-style: italic;
 }
 
-/* Tall card: picture on top, label below, 2 rows high */
-.card-tall {
-  flex-direction: column;
-  grid-row: span 2;
+/* small "Shop now →" hint that appears on hover */
+.market-label::after {
+  content: "Shop now \2192";
+  margin-top: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.15s;
 }
 
-.card-tall .market-image {
-  flex: 1;
+.market-card:hover .market-label::after {
+  opacity: 0.7;
 }
-
-/* Side card: picture left, label right */
-.card-side .market-image,
-.card-side .market-label {
-  width: 50%;
-}
-
-/* Plain card: just the name in the middle */
-.card-plain {
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
 
 /* ---------- Login and Sign up pages (index.html, sign-up.html) ---------- */
 
