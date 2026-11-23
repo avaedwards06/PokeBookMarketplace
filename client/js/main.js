@@ -27,49 +27,49 @@ const markets = [
     tagline: "",
     image: "images/pokemoncard.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 5,
     name: "Bag Charm Market",
     tagline: "",
     image: "images/bagcharm.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 6,
     name: "Furniture Market",
     tagline: "",
     image: "images/furniture.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 7,
     name: "Book Market",
     tagline: "",
     image: "images/book.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 8,
     name: "Food Market",
     tagline: "",
     image: "images/food.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 9,
     name: "Rug Market",
     tagline: "",
     image: "images/rug.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   },
   { id: 10,
     name: "Figurines Market",
     tagline: "",
     image: "images/figurines.png",
     layout: "side",
-    color: ""
+    color: "#f5a9b8"
   }
 ];
 

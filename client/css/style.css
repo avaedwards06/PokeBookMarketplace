@@ -7,7 +7,8 @@
   --card-grey: #ececec;
   --border-grey: #555555;
   --text-black: #000000;
-  --pokeball-red: #e3350d; 
+  --pokeball-red: #e3350d;
+  --card-bar: #a03552; 
 }
 
 /* Page */
@@ -506,4 +507,116 @@ body.register {
   .cart-right {
     text-align: left;
   }
+}
+
+/* ---------- Product cards (market and vendor pages) ---------- */
+
+/* product cards: as many columns as fit, at least 200px wide */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-grey);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--page-white);
+}
+
+/* big picture on top */
+.product-photo {
+  aspect-ratio: 1 / 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-grey);
+  font-style: italic;
+  color: var(--border-grey);
+}
+
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* colored bar with the details */
+.product-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--border-grey);
+  background: var(--card-bar);
+  color: var(--page-white);
+  font-family: "Titillium Web", Arial, sans-serif;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* price on the left, stock on the right */
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-stock {
+  font-size: 14px;
+}
+
+.low-stock {
+  color: #ffd166;
+  font-weight: bold;
+}
+
+.product-vendor {
+  margin: 0;
+  font-size: 14px;
+}
+
+.product-vendor a {
+  color: var(--header-blue);
+}
+
+.product-bar .product-vendor a {
+  color: var(--page-white);
+  font-weight: bold;
+}
+
+/* "Add to cart": white button on the colored bar */
+.add-to-cart {
+  margin-top: auto;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--page-white);
+  color: var(--card-bar);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  opacity: 0.85;
+}
+
+/* sold out: faded */
+.product-card.sold-out {
+  opacity: 0.5;
 }

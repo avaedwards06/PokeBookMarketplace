@@ -88,5 +88,22 @@ function getCartTotal() {
   }, 0);
 }
 
+// shows the number of items on the cart icon in the header
+function updateCartBadge() {
+  const cartButton = document.querySelector(".cart-button");
+  if (!cartButton) return;
+
+  let badge = cartButton.querySelector(".cart-count");
+  if (!badge) {
+    badge = document.createElement("span");
+    badge.className = "cart-count";
+    cartButton.appendChild(badge);
+  }
+
+  const count = getCartCount();
+  badge.textContent = count;
+  badge.hidden = (count === 0);
+}
+
 // shows the number of items
 updateCartBadge();
