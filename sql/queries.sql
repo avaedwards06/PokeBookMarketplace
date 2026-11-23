@@ -21,26 +21,26 @@ ORDER BY Name;
 -- 3. Browse a market
 -- Shows in-stock products in one market and who sells them.
 Table: Vendor, VendorSells, Item
-SELECT Item.Name AS Item, Item.Price, Vendor.Name AS Vendor, VendorSells.Stock
+SELECT VendorSells.ID AS ListingID,Item.Name AS Category, VendorSells.Title, VendorSells.Price, VendorSells.Description, Vendor.Name AS Vendor, VendorSells.Stock
 FROM Vendor
 JOIN VendorSells ON VendorSells.VendorID = Vendor.ID
 JOIN Item ON Item.ID = VendorSells.ItemID
 WHERE Vendor.MarketID = 1
   AND VendorSells.Stock > 0
-ORDER BY Item.Name;
+ORDER BY Item.Name, VendorSells.Title;
 
 
 -- 4. Search products
 -- Finds in-stock products by name (search bar).
 Table: Item, VendorSells, Vendor, Market
-SELECT Item.Name AS Item, Item.Price, Vendor.Name AS Vendor, Market.Name AS Market
-FROM Item
-JOIN VendorSells ON VendorSells.ItemID = Item.ID
+SELECT VendorSells.ID AS ListingID, Item.Name AS Category, VendorSells.Title, VendorSells.Price, VendorSells.Description, Vendor.Name AS Vendor, Market.Name AS Market
+FROM VendorSells
+JOIN Item ON VendorSells.ItemID = Item.ID
 JOIN Vendor ON Vendor.ID = VendorSells.VendorID
 JOIN Market ON Market.ID = Vendor.MarketID
-WHERE Item.Name LIKE '%plush%'
+WHERE (Item.Name LIKE '%plush%' OR VendorSells.Title LIKE '%plush%')
   AND VendorSells.Stock > 0
-ORDER BY Item.Price;
+ORDER BY VendorSells.Price;
 
 
 -- 5. “My order” history
@@ -55,12 +55,13 @@ ORDER BY OrderDate DESC;
 -- 6. Order details
 -- Shows the items in one order and which vendor sold which.
 Table: OrderItem, Item, Vendor
-SELECT Item.Name AS Item, Vendor.Name AS Vendor, OrderItem.QUANTITY,
+SELECT VendorSells.Title AS Product, Item.Name AS Category, Vendor.Name AS Vendor, OrderItem.QUANTITY,
        OrderItem.ItemPrice,
        OrderItem.QUANTITY * OrderItem.ItemPrice AS LineTotal
 FROM OrderItem
-JOIN Item ON Item.ID = OrderItem.ItemID
-JOIN Vendor ON Vendor.ID = OrderItem.VendorID
+JOIN VendorSells ON VendorSells.ID = OrderItem.VendorSellsID
+JOIN Item ON Item.ID = VendorSells.ItemID
+JOIN Vendor ON Vendor.ID = VendorSells.VendorID
 WHERE OrderItem.OrderID = 9;
 
 
@@ -68,17 +69,17 @@ WHERE OrderItem.OrderID = 9;
 -- 7. My inventory
 -- Shows every product the vendor sells and how many are left.
 Table: VendorSells, Item
-SELECT Item.ID AS ItemID, Item.Name AS Item, Item.Price, VendorSells.Stock
+SELECT VendorSells.ID AS ListingID, Item.Name AS Category, VendorSells.Title AS Product, VendorSells.Price, VendorSells.Description, VendorSells.Stock
 FROM VendorSells
 JOIN Item ON Item.ID = VendorSells.ItemID
 WHERE VendorSells.VendorID = 2
-ORDER BY Item.Name;
+ORDER BY Item.Name, VendorSells.Title;
 
 
 -- 8. Low-stock (alert)
 -- Shows products with fewer than 5 left so the vendor can restock. 
 Table: VendorSells, Item
-SELECT Item.Name AS Item, VendorSells.Stock
+SELECT VendorSells.ID AS ListingID, Item.Name AS Category, VendorSells.Title AS Product, VendorSells.Stock
 FROM VendorSells
 JOIN Item ON Item.ID = VendorSells.ItemID
 WHERE VendorSells.VendorID = 1
@@ -91,11 +92,11 @@ ORDER BY VendorSells.Stock;
 Table: OrderItem, CustomerItem, Customer, Item
 SELECT CustomerOrder.ID AS OrderID, CustomerOrder.OrderDate,
        CustomerOrder.Status, Customer.UserName, Customer.Address,
-       Item.Name AS Item, OrderItem.QUANTITY
+       VendorSells.Title AS Product, OrderItem.QUANTITY
 FROM OrderItem
+JOIN VendorSells ON VendorSells.ID = OrderItem.VendorSellsID
 JOIN CustomerOrder ON CustomerOrder.ID = OrderItem.OrderID
 JOIN Customer ON Customer.ID = CustomerOrder.CustomerID
-JOIN Item ON Item.ID = OrderItem.ItemID
 WHERE OrderItem.VendorID = 3
 ORDER BY CustomerOrder.OrderDate DESC;
 
@@ -117,7 +118,8 @@ Table: OrderItem, Vendor, CustomerOrder
 SELECT Vendor.Name AS Vendor,
        SUM(OrderItem.QUANTITY * OrderItem.ItemPrice) AS Revenue
 FROM OrderItem
-JOIN Vendor ON Vendor.ID = OrderItem.VendorID
+JOIN VendorSells ON VendorSells.ID = OrderItem.VendorSellsID
+JOIN Vendor ON Vendor.ID = VendorSells.VendorID
 JOIN CustomerOrder ON CustomerOrder.ID = OrderItem.OrderID
 WHERE CustomerOrder.Status <> 'Cancelled'
 GROUP BY Vendor.ID, Vendor.Name
@@ -126,12 +128,13 @@ ORDER BY Revenue DESC;
 -- 12. Best-selling products
 -- Shows the top 5 products by units sold, not counting cancelled orders.
 Table: OrderItem, Item, CustomerOrder
-SELECT Item.Name AS Item, SUM(OrderItem.QUANTITY) AS UnitsSold
+SELECT VendorSells.Title AS Product, Vendor.Name AS Vendor, SUM(OrderItem.QUANTITY) AS UnitsSold
 FROM OrderItem
-JOIN Item ON Item.ID = OrderItem.ItemID
+JOIN VendorSells ON VendorSells.ID = OrderItem.VendorSellsID
+JOIN Vendor ON Vendor.ID = VendorSells.VendorID
 JOIN CustomerOrder ON CustomerOrder.ID = OrderItem.OrderID
 WHERE CustomerOrder.Status <> 'Cancelled'
-GROUP BY Item.ID, Item.Name
+GROUP BY VendorSells.ID, VendorSells.Title,Vendor.Name
 ORDER BY UnitsSold DESC
 LIMIT 5;
 
