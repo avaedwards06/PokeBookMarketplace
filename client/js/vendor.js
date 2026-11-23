@@ -8,55 +8,6 @@ function showStatus(message) {
   status.hidden = (message === "");
 }
 
-// turns number to price
-function formatPrice(price) {
-  return "$" + Number(price).toFixed(2);
-}
-
-// makes the card for one product
-function createProductCard(product) {
-  const card = document.createElement("div");
-  card.className = "product-card";
-
-  // images area
-  const photo = document.createElement("div");
-  photo.className = "product-photo";
-  photo.textContent = "Picture coming soon";
-
-  const name = document.createElement("h3");
-  name.className = "product-name";
-  name.textContent = product.Name;
-
-  const price = document.createElement("p");
-  price.className = "product-price";
-  price.textContent = formatPrice(product.Price);
-
-  const description = document.createElement("p");
-  description.className = "product-description";
-  description.textContent = product.Description || "";
-
-  // stock: sold out, only a few left, or normal
-  const stock = document.createElement("p");
-  stock.className = "product-stock";
-  if (product.Stock === 0) {
-    stock.textContent = "Sold out";
-    stock.classList.add("low-stock");
-    card.classList.add("sold-out");
-  } else if (product.Stock < 5) {
-    stock.textContent = "Only " + product.Stock + " left!";
-    stock.classList.add("low-stock");
-  } else {
-    stock.textContent = product.Stock + " in stock";
-  }
-
-  card.appendChild(photo);
-  card.appendChild(name);
-  card.appendChild(price);
-  card.appendChild(description);
-  card.appendChild(stock);
-  return card;
-}
-
 // put the vendor's data on the page
 function showVendor(vendor) {
   document.getElementById("page-title").textContent = vendor.name;
@@ -67,10 +18,20 @@ function showVendor(vendor) {
   backLink.href = "market.html?id=" + vendor.marketId;
   backLink.textContent = "\u2190 " + vendor.market; //the u line is an arrow lol
 
-  // products
+  // products (cards come from product-card.js)
+  // false = no "Sold by", since it's this vendor's own page
   const productGrid = document.getElementById("product-grid");
-  vendor.products.forEach(function (product) {
-    productGrid.appendChild(createProductCard(product));
+  vendor.products.forEach(function (row) {
+    const product = {
+      itemId: row.ID,
+      vendorId: vendor.id,
+      name: row.Name,
+      vendor: vendor.name,
+      price: row.Price,
+      stock: row.Stock,
+      photo: row.Photo
+    };
+    productGrid.appendChild(createProductCard(product, false));
   });
   document.getElementById("product-section").hidden = false;
 

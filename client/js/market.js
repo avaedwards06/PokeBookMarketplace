@@ -8,11 +8,6 @@ function showStatus(message) {
   status.hidden = (message === "");
 }
 
-// turns price inputs like "9.99" into "$9.99"
-function formatPrice(price) {
-  return "$" + Number(price).toFixed(2);
-}
-
 // makes a button-like link for one vendor
 function createVendorLink(vendor) {
   const link = document.createElement("a");
@@ -20,51 +15,6 @@ function createVendorLink(vendor) {
   link.href = "vendor.html?id=" + vendor.ID;
   link.textContent = vendor.Name;
   return link;
-}
-
-// makes the card for one product
-function createProductCard(product) {
-  const card = document.createElement("div");
-  card.className = "product-card";
-
-  // images area
-  const photo = document.createElement("div");
-  photo.className = "product-photo";
-  photo.textContent = "Picture coming soon";
-
-  const name = document.createElement("h3");
-  name.className = "product-name";
-  name.textContent = product.Name;
-
-  const price = document.createElement("p");
-  price.className = "product-price";
-  price.textContent = formatPrice(product.Price);
-
-
-  const soldBy = document.createElement("p");
-  soldBy.className = "product-vendor";
-  soldBy.textContent = "Sold by ";
-  const vendorLink = document.createElement("a");
-  vendorLink.href = "vendor.html?id=" + product.VendorID;
-  vendorLink.textContent = product.Vendor;
-  soldBy.appendChild(vendorLink);
-
-  // stock warn when only a few are left
-  const stock = document.createElement("p");
-  stock.className = "product-stock";
-  if (product.Stock < 5) {
-    stock.textContent = "Only " + product.Stock + " left!";
-    stock.classList.add("low-stock");
-  } else {
-    stock.textContent = product.Stock + " in stock";
-  }
-
-  card.appendChild(photo);
-  card.appendChild(name);
-  card.appendChild(price);
-  card.appendChild(soldBy);
-  card.appendChild(stock);
-  return card;
 }
 
 // put the market's data on the page
@@ -80,10 +30,20 @@ function showMarket(market) {
   });
   document.getElementById("vendor-section").hidden = false;
 
-  // products
+  // products (cards come from product-card.js)
+  // true = show "Sold by", since a market has many vendors
   const productGrid = document.getElementById("product-grid");
-  market.products.forEach(function (product) {
-    productGrid.appendChild(createProductCard(product));
+  market.products.forEach(function (row) {
+    const product = {
+      itemId: row.ID,
+      vendorId: row.VendorID,
+      name: row.Name,
+      vendor: row.Vendor,
+      price: row.Price,
+      stock: row.Stock,
+      photo: row.Photo
+    };
+    productGrid.appendChild(createProductCard(product, true));
   });
   document.getElementById("product-section").hidden = false;
 

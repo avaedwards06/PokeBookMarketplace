@@ -14,14 +14,14 @@ const db = mysql.createPool({
   database: process.env.DB_NAME
 });
 
-// Job 1: send the website (main.html, css, js, images...)
+// send the website
 app.use(express.static(path.join(__dirname, "..", "client")));
 
 // the API
 // The ? in a query is filled in by the second argument of
 // db.query()
 
-// List all markets
+// list all markets
 app.get("/api/markets", async (req, res) => {
   try {
     const [markets] = await db.query(
@@ -35,7 +35,7 @@ app.get("/api/markets", async (req, res) => {
 });
 
 
-// one market: its name, its vendors, and its in-stock products
+// one market: its name, its vendors, and its in-stock listings
 app.get("/api/markets/:id", async (req, res) => {
   const marketId = req.params.id;
 
@@ -54,16 +54,19 @@ app.get("/api/markets/:id", async (req, res) => {
       [marketId]
     );
 
+    // each VendorSells row is one listing with its own ID, title,
+    // price, stock and photo
     const [products] = await db.query(
-      `SELECT Item.ID, Item.Name, Item.Price, Item.Description,
-              Vendor.ID AS VendorID, Vendor.Name AS Vendor,
-              VendorSells.Stock
+      `SELECT VendorSells.ID, VendorSells.ItemID,
+              VendorSells.Title AS Name, VendorSells.Price,
+              VendorSells.Description, VendorSells.Stock,
+              VendorSells.Photo,
+              Vendor.ID AS VendorID, Vendor.Name AS Vendor
        FROM Vendor
        JOIN VendorSells ON VendorSells.VendorID = Vendor.ID
-       JOIN Item ON Item.ID = VendorSells.ItemID
        WHERE Vendor.MarketID = ?
          AND VendorSells.Stock > 0
-       ORDER BY Item.Name`,
+       ORDER BY VendorSells.Title`,
       [marketId]
     );
 
@@ -98,14 +101,15 @@ app.get("/api/vendors/:id", async (req, res) => {
       return res.status(404).json({ error: "Vendor not found" });
     }
 
-    // inventory
+    // all of this vendor's listings (sold-out ones too)
     const [products] = await db.query(
-      `SELECT Item.ID, Item.Name, Item.Price, Item.Description,
-              VendorSells.Stock
+      `SELECT VendorSells.ID, VendorSells.ItemID,
+              VendorSells.Title AS Name, VendorSells.Price,
+              VendorSells.Description, VendorSells.Stock,
+              VendorSells.Photo
        FROM VendorSells
-       JOIN Item ON Item.ID = VendorSells.ItemID
        WHERE VendorSells.VendorID = ?
-       ORDER BY Item.Name`,
+       ORDER BY VendorSells.Title`,
       [vendorId]
     );
 
@@ -123,23 +127,25 @@ app.get("/api/vendors/:id", async (req, res) => {
 });
 
 
-// search products by name
+// search listings by title OR item type
 app.get("/api/search", async (req, res) => {
   const search = req.query.q || "";
 
   try {
     const [products] = await db.query(
-      `SELECT Item.ID, Item.Name, Item.Price,
+      `SELECT VendorSells.ID, VendorSells.ItemID,
+              VendorSells.Title AS Name, VendorSells.Price,
+              VendorSells.Stock, VendorSells.Photo,
               Vendor.ID AS VendorID, Vendor.Name AS Vendor,
               Market.Name AS Market
-       FROM Item
-       JOIN VendorSells ON VendorSells.ItemID = Item.ID
+       FROM VendorSells
+       JOIN Item ON Item.ID = VendorSells.ItemID
        JOIN Vendor ON Vendor.ID = VendorSells.VendorID
        JOIN Market ON Market.ID = Vendor.MarketID
-       WHERE Item.Name LIKE ?
+       WHERE (VendorSells.Title LIKE ? OR Item.Name LIKE ?)
          AND VendorSells.Stock > 0
-       ORDER BY Item.Price`,
-      ["%" + search + "%"]
+       ORDER BY VendorSells.Price`,
+      ["%" + search + "%", "%" + search + "%"]
     );
     res.json(products);
   } catch (err) {
